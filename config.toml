@@ -3,7 +3,7 @@ languageCode = 'zh-tw'
 defaultContentLanguage = "zh-tw"
 title = 'AAC簡易說明文件'
 theme = ["github.com/McShelby/hugo-theme-relearn"]
-canonifyurls = false
+canonifyurls = true
 
 [module]
   [[module.imports]]
