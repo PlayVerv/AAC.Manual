@@ -1,0 +1,1 @@
+var relearn_search_index=[{content:"",description:"",tags:null,title:"AAC簡易說明文件",uri:"/AAC.Manual/index.html"},{content:"",description:"",tags:null,title:"Categories",uri:"/AAC.Manual/categories/index.html"},{content:"",description:"",tags:null,title:"Tags",uri:"/AAC.Manual/tags/index.html"}]
