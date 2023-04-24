@@ -5,6 +5,7 @@ weight: 1
 description: "基本軟體運作畫面"
 ---
 
-![Imageeee](images/basic/ui.png?width=20vw)
+![Imageeee1](/images/basic/ui.png?classes=shadow&width=30vw "1.8版")
 
-![Imageeee](images/favicon/favicon-32x32.png)
+軟體啟動後的畫面，此時尚未建立檔案，介面初始的狀態。
+
