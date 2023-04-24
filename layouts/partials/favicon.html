@@ -1,0 +1,14 @@
+    {{- $assetBusting := not .Site.Params.disableAssetsBusting }}
+    {{- if (fileExists "/static/images/favicon/favicon.svg") }}
+    <link href="{{ "images/favicon/favicon.svg" | relURL }}{{ if $assetBusting }}?{{ now.Unix }}{{ end }}" rel="icon" type="image/svg+xml">
+    {{- else if (fileExists "/static/images/favicon/favicon.png") }}
+    <link href="{{ "images/favicon/favicon.png" | relURL }}{{ if $assetBusting }}?{{ now.Unix }}{{ end }}" rel="icon" type="image/png">
+    {{- else if (fileExists "/static/images/favicon/favicon.ico") }}
+    <link href="{{ "images/favicon/favicon.ico" | relURL }}{{ if $assetBusting }}?{{ now.Unix }}{{ end }}" rel="icon" type="image/x-icon">
+    {{- else if (fileExists "/static/images/favicon/logo.svg") }}
+    <link href="{{ "images/favicon/logo.svg" | relURL }}{{ if $assetBusting }}?{{ now.Unix }}{{ end }}" rel="icon" type="image/svg+xml">
+    {{- else if (fileExists "/static/images/favicon/logo.png") }}
+    <link href="{{ "images/favicon/logo.png" | relURL }}{{ if $assetBusting }}?{{ now.Unix }}{{ end }}" rel="icon" type="image/png">
+    {{- else if (fileExists "/static/images/favicon/logo.ico") }}
+    <link href="{{ "images/favicon/logo.ico" | relURL }}{{ if $assetBusting }}?{{ now.Unix }}{{ end }}" rel="icon" type="image/x-icon">
+    {{- end }}
