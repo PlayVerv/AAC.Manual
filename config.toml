@@ -3,6 +3,10 @@ languageCode = 'zh-tw'
 defaultContentLanguage = "zh-tw"
 title = 'AAC簡易說明文件'
 theme = ["github.com/McShelby/hugo-theme-relearn"]
+
+# 因為baseURL不是單純https://playverv.github.io
+# 所以CSS/favicon等等的路徑沒問題，但是static的image路徑反而是預期這個
+# 如果沒設定 canonifyurls = true 則image因相對路徑錯誤會無法顯示
 canonifyurls = true
 
 [module]
