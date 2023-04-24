@@ -131,18 +131,18 @@ home = [ "HTML", "RSS", "SEARCH"]
     languageName = "繁體中文"
     landingPageName = "<i class='fas fa-home'></i> 首頁"
 
-  [[Languages.zh-tw.menu.shortcuts]]
-    name = "<i class='fab fa-fw fa-github'></i> GitHub repo"
-    identifier = "ds"
-    url = "https://github.com/playverv/AAC.Manual"
-    weight = 10
+#  [[Languages.zh-tw.menu.shortcuts]]
+#    name = "<i class='fab fa-fw fa-github'></i> GitHub repo"
+#    identifier = "ds"
+#    url = "https://github.com/playverv/AAC.Manual"
+#    weight = 10
 
   [[Languages.zh-tw.menu.shortcuts]]
     name = "<i class='fas fa-fw fa-camera'></i> Showcases"
     url = "more/showcase/"
     weight = 11
 
-  [[Languages.zh-tw.menu.shortcuts]]
-    name = "<i class='fas fa-fw fa-tags'></i> Tags"
-    url = "tags/"
-    weight = 20
+#  [[Languages.zh-tw.menu.shortcuts]]
+#    name = "<i class='fas fa-fw fa-tags'></i> Tags"
+#    url = "tags/"
+#    weight = 20
