@@ -1,12 +1,12 @@
-baseURL = 'https://playverv.github.io/AAC.Manual/'
+baseURL = 'https://playverv.github.io/AAC.Manual'
 languageCode = 'zh-tw'
 defaultContentLanguage = "zh-tw"
 title = 'AAC簡易說明文件'
 theme = ["github.com/McShelby/hugo-theme-relearn"]
 
 [module]
-[[module.imports]]
-  path = 'github.com/McShelby/hugo-theme-relearn'
+  [[module.imports]]
+    path = 'github.com/McShelby/hugo-theme-relearn'
 
 # For search functionality
 [outputs]
