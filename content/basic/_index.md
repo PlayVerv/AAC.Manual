@@ -6,4 +6,4 @@ chapter = true
 description = "基本介面配置說明"
 +++
 
-{{%children containerstyle="div" style="h2" description="true" %}}
+{{%children containerstyle="div" style="h2" %}}
