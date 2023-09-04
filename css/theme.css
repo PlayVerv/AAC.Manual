@@ -1,7 +1,97 @@
 @charset "UTF-8";
 
 @import "tags.css";
-@import "tabs.css";
+
+/* until browsers don't let us set length values based on dppx, we
+need a way to calculate them ourself */
+:root {
+    --dpr: 1;
+    --bpx: 1;
+}
+@media (min-resolution: 105dpi) {
+    :root {
+        --dpr: 1.1;
+        --bpx: 1.1;
+    }
+}
+@media (min-resolution: 115dpi) {
+    :root {
+        --dpr: 1.2;
+        --bpx: 1.2;
+    }
+}
+@media (min-resolution: 120dpi) {
+    :root {
+        --dpr: 1.25;
+        --bpx: 1.25;
+    }
+}
+@media (min-resolution: 128dpi) {
+    :root {
+        --dpr: 1.333;
+        --bpx: 1.333;
+    }
+}
+@media (min-resolution: 144dpi) {
+    :root {
+        --dpr: 1.5;
+        --bpx: 1.5;
+    }
+}
+@media (min-resolution: 160dpi) {
+    :root {
+        --dpr: 1.666;
+        --bpx: 1.666;
+    }
+}
+@media (min-resolution: 168dpi) {
+    :root {
+        --dpr: 1.75;
+        --bpx: 1.75;
+    }
+}
+@media (min-resolution: 192dpi) {
+    :root {
+        --dpr: 2;
+        --bpx: 1;
+    }
+}
+@media (min-resolution: 240dpi) {
+    :root {
+        --dpr: 2.5;
+        --bpx: 1.25;
+    }
+}
+@media (min-resolution: 288dpi) {
+    :root {
+        --dpr: 3;
+        --bpx: 1;
+    }
+}
+@media (min-resolution: 384dpi) {
+    :root {
+        --dpr: 4;
+        --bpx: 1;
+    }
+}
+@media (min-resolution: 480dpi) {
+    :root {
+        --dpr: 5;
+        --bpx: 1.25;
+    }
+}
+@media (min-resolution: 576dpi) {
+    :root {
+        --dpr: 6;
+        --bpx: 1.5;
+    }
+}
+@media (min-resolution: 768dpi) {
+    :root {
+        --dpr: 8;
+        --bpx: 1;
+    }
+}
 
 html {
     height: 100%;
@@ -170,7 +260,6 @@ dd {
     margin: .25rem 0 0 0;
     min-width: 1rem;
     position: absolute;
-    z-index: -1;
 }
 
 #sidebar ul li.visited > a .read-icon {
@@ -323,7 +412,7 @@ body:not(.print) #body-inner.narrow p {
 }
 
 mark {
-    color: black;
+    color: rgba( 0, 0, 0, 1 );
 }
 
 h1 {
@@ -424,6 +513,8 @@ blockquote cite {
 
 div.box {
     margin: 1.5rem 0;
+    border-style: solid;
+    border-width: 1px;
 }
 
 div.box > .box-label {
@@ -443,7 +534,11 @@ div.box > .box-content {
 #body table td > :first-child,
 #body table td > :first-child :first-child,
 #body div.box > .box-content > :first-child,
-#body div.box > .box-content > :first-child :first-child {
+#body div.box > .box-content > :first-child :first-child,
+#body div.expand > .expand-content-text > :first-child,
+#body div.expand > .expand-content-text > :first-child :first-child,
+#body div.tab-content > .tab-content-text > :first-child,
+#body div.tab-content > .tab-content-text > :first-child :first-child {
     margin-top: 0;
 }
 
@@ -452,7 +547,11 @@ div.box > .box-content {
 #body table td > :last-child,
 #body table td > :last-child :last-child,
 #body div.box > .box-content > :last-child,
-#body div.box > .box-content > :last-child :last-child {
+#body div.box > .box-content > :last-child :last-child,
+#body div.expand > .expand-content-text > :last-child,
+#body div.expand > .expand-content-text > :last-child :last-child,
+#body div.tab-content > .tab-content-text > :last-child,
+#body div.tab-content > .tab-content-text > :last-child :last-child {
     margin-bottom: 0;
 }
 
@@ -601,10 +700,10 @@ td {
 }
 
 .tooltipped:after {
-    background: rgba(0, 0, 0, 1);
-    border: 1px solid #777;
+    background: rgba( 0, 0, 0, 1 );
+    border: 1px solid rgba( 119, 119, 119, 1 );
     border-radius: 3px;
-    color: #fff;
+    color: rgba( 255, 255, 255, 1 );
     content: attr(aria-label);
     display: none;
     font-family: "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
@@ -627,7 +726,7 @@ td {
 
 .tooltipped:before {
     border: 5px solid transparent;
-    color: rgba(0, 0, 0, 1);
+    color: rgba( 0, 0, 0, 1 );
     content: "";
     display: none;
     height: 0;
@@ -658,7 +757,7 @@ td {
 .tooltipped-s:before,
 .tooltipped-se:before,
 .tooltipped-sw:before {
-    border-bottom-color: rgba(0, 0, 0, 0.8);
+    border-bottom-color: rgba( 0, 0, 0, .8 );
     bottom: -5px;
     margin-right: -5px;
     right: 50%;
@@ -686,7 +785,7 @@ td {
 .tooltipped-n:before,
 .tooltipped-ne:before,
 .tooltipped-nw:before {
-    border-top-color: rgba(0, 0, 0, 0.8);
+    border-top-color: rgba( 0, 0, 0, .8 );
     bottom: auto;
     margin-right: -5px;
     right: 50%;
@@ -716,7 +815,7 @@ td {
 }
 
 .tooltipped-w:before {
-    border-left-color: rgba(0, 0, 0, 0.8);
+    border-left-color: rgba( 0, 0, 0, .8 );
     bottom: 50%;
     left: -5px;
     margin-top: -5px;
@@ -731,7 +830,7 @@ td {
 }
 
 .tooltipped-e:before {
-    border-right-color: rgba(0, 0, 0, 0.8);
+    border-right-color: rgba( 0, 0, 0, .8 );
     bottom: 50%;
     margin-top: -5px;
     right: -5px;
@@ -908,7 +1007,7 @@ html[dir="rtl"] #body #breadcrumbs {
         overflow: hidden;
     }
     .mobile-support.sidebar-flyout #sidebar-overlay{
-        background-color: rgba(134, 134, 134, 0.5);
+        background-color: rgba( 134, 134, 134, .5 );
         bottom: 0;
         cursor: pointer;
         left: 0;
@@ -1001,7 +1100,6 @@ option {
 }
 
 .expand > label:after {
-    background-color: var(--INTERNAL-MAIN-LINK-HOVER-color);
     content: "";
     display: block;
     height: 1px;
@@ -1019,6 +1117,7 @@ option {
 }
 
 .expand > .expand-content {
+    margin-inline-start: 1rem;
     margin-top: .5rem;
 }
 /* closed expander */
@@ -1054,9 +1153,11 @@ html[dir="rtl"] .expand > .expand-label > i.fa-chevron-right {
     margin-top: 2rem;
 }
 
+.headline i,
 .footline i{
     margin-inline-start: .5rem;
 }
+.headline i:first-child,
 .footline i:first-child{
     margin-inline-start: 0;
 }
@@ -1297,45 +1398,6 @@ h6 a {
     margin-top: 1rem;
 }
 
-rapi-doc {
-    /* adjust rapi-doc internals to fill out available space with render-style=view */
-    margin-left: calc( -8px - 24px );
-    width: calc( 100% + 8px + 24px + 8px );
-}
-@media (max-width: 48rem) {
-    rapi-doc {
-        margin-left: calc( -12px );
-        width: calc( 100% + 12px + 4px );
-    }
-}
-
-rapi-doc::part(section-main-content) {
-    /* override variables for adapting rapidoc design to theme */
-    --font-mono: var(--INTERNAL-CODE-font);
-    --font-size-mono: .9375rem;
-    --font-regular: var(--INTERNAL-MAIN-font);
-    --font-size-regular: 1.015625rem;
-    --font-size-small: .875rem;
-    font-weight: 300 !important;
-}
-
-rapi-doc::part(section-overview-title) {
-    color: var(--INTERNAL-MAIN-TITLES-H2-color);
-    font-size: 2.55rem;
-    font-weight: 500;
-}
-
-rapi-doc::part(btn) {
-    /* makes download button large enough to not overflow default text */
-    width: unset !important;
-}
-
-rapi-doc::part(section-endpoint-head-method) {
-    /* makes method marker large enough to not overflow on text DELETE */
-    font-size: .6875rem;
-    width: 5.5rem;
-}
-
 .select-container i {
     padding-top: .25em;
 }
@@ -1381,7 +1443,7 @@ html[dir="rtl"] .select-container span {
 }
 
 .select-style option {
-    color: #000000;
+    color: rgba( 0, 0, 0, 1 );
     padding: 0;
     margin: 0;
 }
@@ -1471,8 +1533,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     left: 50%;
     text-align: center;
     width: 200px;
-    background: #fff;
-    color: #368512;
+    background: rgba( 255, 255, 255, 1 );
+    color: rgba( 54, 133, 18, 1 );
     padding: .8em 0 .7em;
     font-size: 16px;
     z-index: 5000;
@@ -1518,7 +1580,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 .searchform input::-webkit-input-placeholder,
 .searchform input::placeholder {
-    color: rgba( 134, 134, 134 );
+    color: rgba( 134, 134, 134, 1 );
     opacity: .666;
 }
 
@@ -1600,10 +1662,8 @@ article ul > li > input[type="checkbox"] {
     -webkit-appearance: none;
     appearance: none;
     /* For iOS < 15 */
-    background-color: var(--INTERNAL-MAIN-BG-color); /* box background */
     border: 0.15em solid currentColor;
     border-radius: 0.15em;
-    color: var(--INTERNAL-MAIN-TEXT-color);
     display: inline-grid;
     font: inherit;
     height: 1.15em;
@@ -1633,7 +1693,7 @@ article ul > li > input[type="checkbox"]:checked::before {
 /* CSS Lightbox https://codepen.io/gschier/pen/kyRXVx */
 .lightbox {
     align-items: center;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba( 0, 0, 0, .8 );
     bottom: 0;
     display: none;
     justify-content: center;
@@ -1798,4 +1858,109 @@ article ul > li > input[type="checkbox"]:checked::before {
 
 html[dir="rtl"] #sidebar ul.collapsible-menu > li > label > i.fa-chevron-right {
     transform: scaleX(-1);
+}
+
+.columnize{
+    column-count: 2;
+}
+@media screen and (min-width: 79.25rem) {
+    .columnize{
+        column-count: 3;
+    }
+}
+
+#body .tab-panel{
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+#body .tab-nav{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#body .tab-nav-title{
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.42857143;
+    padding: .2rem 0;
+    margin-inline-start: .6rem;
+}
+
+#body .tab-nav-button{
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    display: block;
+    font-size: .9rem;
+    font-weight: 300;
+    line-height: 1.42857143;
+    margin-inline-start: .6rem;
+}
+
+#body .tab-nav-button.active{
+    border-radius: 2px 2px 0 0;
+    cursor: default;
+}
+
+#body .tab-nav-button > *{
+    position: relative;
+}
+
+#body .tab-nav-button.active > *{
+    border-radius: 1px 1px 0 0;
+}
+
+#body .tab-nav-button > * > *{
+    border-bottom-style: solid;
+    border-bottom-width: .2rem;
+    padding: .2rem .6rem 0 .6rem;
+}
+
+#body .tab-nav-button.active > * > *{
+    border-bottom-color: transparent;
+    font-weight: 500;
+}
+
+#body .tab-nav-button > * > .tab-nav-hidden{
+    font-weight: 500;
+    visibility: hidden;
+}
+
+#body .tab-nav-button > * > .tab-nav-text{
+    position: absolute;
+    top: 0;
+}
+
+#body .tab-content{
+    border-style: solid;
+    border-width: 1px;
+    display: none;
+    /* if setting a border to 1px, a browser instead sets it to 1dppx which is not
+    usable as a unit yet, so we have to calculate it ourself */
+    margin-top: calc( -1px / var(--bpx) );
+    z-index: 10;
+}
+
+#body .tab-content.active{
+    display: block;
+}
+
+#body .tab-content-text{
+    padding: 1rem;
+}
+
+/* remove margin if only a single code block is contained in the tab (FF without :has using .codify style) */
+#body .tab-content.codify > .tab-content-text{
+    padding: 0;
+}
+#body .tab-content-text:has(> div.highlight:only-child){
+    padding: 0;
+}
+
+/* remove border from a code block if single  */
+#body .tab-content-text > div.highlight:only-child > pre,
+#body .tab-content-text > pre.pre-code:only-child{
+    border: 0;
 }
